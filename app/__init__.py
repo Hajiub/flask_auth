@@ -17,7 +17,7 @@ def create_app():
     @login_manager.user_loader
     def load_user(user_id):
         from .models import User
-        return User.get(int(user_id))
+        return User.query.get(int(user_id))
     #register your blueprint
     from .auth import auth
     app.register_blueprint(auth)
